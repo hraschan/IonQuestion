@@ -1,2 +1,0 @@
-# IonQuestion
-First Ionic Project
