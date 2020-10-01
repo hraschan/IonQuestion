@@ -1,4 +1,4 @@
-interface Question {
+export interface Question {
 
     //Variablen
 
@@ -8,8 +8,15 @@ interface Question {
     a2: String;                 //Antwort 2
     a3: String;                 //Antwort 3
     a4: String;                 //Antwort 4
-    correct: String;            //Korrenkte Antwort
+    correct: Number;            //Korrenkte Antwort
 
-    
+}
+
+export interface Quiz {
+
+    //variablen
+    id: String;
+    quizName: String;
+    questions: Question[];      //Array mit mehreren Questions
 
 }
