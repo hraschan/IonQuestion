@@ -1,0 +1,7 @@
+{
+  "name": "IonQuestion",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
