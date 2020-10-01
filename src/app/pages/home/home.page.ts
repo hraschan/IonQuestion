@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  public anzahl: String = "0";
+
+  constructor(private data: DataService) {
+
+    console.log(this.data.currentQuiz.questions.length);
+    this.anzahl = this.data.currentQuiz.questions.length.toString();
+  }
 
 }
