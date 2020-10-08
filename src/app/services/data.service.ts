@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Quiz } from './Inferfaces';
+import { Question, Quiz } from './Inferfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +19,9 @@ export class DataService {
       a4: "Weiß",
       correct: 2
     });
+   }
+
+   public deleteQuestion(q: Question) {
+
    }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
 import { Question } from 'src/app/services/Inferfaces';
 
@@ -10,7 +11,7 @@ import { Question } from 'src/app/services/Inferfaces';
 export class QuestionListPage implements OnInit {
 
   public questions;
-  constructor(private data:DataService) { 
+  constructor(private data:DataService, private navCTRL: NavController) { 
     this.questions = data.currentQuiz.questions;
     
   }
@@ -19,9 +20,14 @@ export class QuestionListPage implements OnInit {
   }
 
   showDetails(q: Question) {
+    if(q)
+      this.navCTRL.navigateForward("question/" + q.id);
+    else
+      this.navCTRL.navigateForward("question/0");
+        
   }
 
   deleteQuestion(q: Question) {
-
+    this.data.deleteQuestion(q);
   }
 }
