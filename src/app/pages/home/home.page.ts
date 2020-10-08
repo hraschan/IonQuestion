@@ -16,4 +16,8 @@ export class HomePage {
     this.anzahl = this.data.currentQuiz.questions.length.toString();
   }
 
+  showList() {
+    
+  }
+
 }
