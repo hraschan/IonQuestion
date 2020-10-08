@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-title>Alle Fragen</ion-title>
     <ion-buttons slot="end">
-      <ion-button icon-only (click)="showDetails('0')">
+      <ion-button icon-only (click)="showDetails(null)">
         <ion-icon name="add-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -14,10 +14,17 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let q of questions">
-      <ion-label>
-        {{q.title}}
-      </ion-label>
-    </ion-item>
+    <ion-item-sliding *ngFor="let q of questions">
+      <ion-item (click)="showDetails(q)">
+        <ion-label>
+          {{q.title}}
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="deleteQuestion(q)" color="danger">
+          Delete
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

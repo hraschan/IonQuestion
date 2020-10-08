@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { Question } from 'src/app/services/Inferfaces';
 
 @Component({
   selector: 'app-question-list',
@@ -17,7 +18,10 @@ export class QuestionListPage implements OnInit {
   ngOnInit() {
   }
 
-  showDetails(id: string) {
+  showDetails(q: Question) {
+  }
+
+  deleteQuestion(q: Question) {
 
   }
 }
