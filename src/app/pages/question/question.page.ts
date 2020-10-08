@@ -34,6 +34,7 @@ export class QuestionPage implements OnInit {
       
         this.data.addQuestion(this.question);
     }
+    this.data.saveQuiz();
   }
   public setCorrect(n: number) {
     this.question.correct = n;

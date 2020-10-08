@@ -14,9 +14,11 @@ export class HomePage {
   constructor(private data: DataService, private navCTRL: NavController) {
 
     console.log(this.data.currentQuiz.questions.length);
+    
+  }
+  IonViewEnterLoad(){
     this.anzahl = this.data.currentQuiz.questions.length.toString();
   }
-
   showList() {
     this.navCTRL.navigateForward("/question-list");
   }

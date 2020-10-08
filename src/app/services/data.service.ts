@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Question, Quiz } from './Inferfaces';
 import {v4 as uuid} from "uuid";
+import  {Plugins} from "@capacitor/core"
+const { Storage} = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +13,30 @@ export class DataService {
 
 
   constructor() {
-    this.currentQuiz.questions.push({
-      id: "1",
-      title: "Welche Farbe hat Armin?",
-      a1: "Schwarz",
-      a2: "Blau",
-      a3: "Grün",
-      a4: "Weiß",
-      correct: 2
-    });
+    this.loadQuiz();
+   }
+
+   public saveQuiz() {
+      Storage.set({
+        key: "currentQuiz",
+        value: JSON.stringify(this.currentQuiz)
+      }).then(()=>{
+        console.log("Then");
+      }).catch((reason: any)=>{
+        console.log(reason);
+      });
+   }
+
+   public async loadQuiz()  {
+      let obj = await Storage.get({
+        key: "currentQuiz"
+      })
+      if(obj.value) {
+        this.currentQuiz = JSON.parse(obj.value);
+        if(!this.currentQuiz.quizName) console.log("Komischer Fehler");
+      }else{
+        console.log("wert nicht gefunden")
+      }
    }
 
    public deleteQuestion(q: Question) {
@@ -27,6 +44,7 @@ export class DataService {
     if(index>-1){
       this.currentQuiz.questions.splice(index, 1);
     }
+    this.saveQuiz();
    }
    public getQuestion(id: string):Question{
     return this.currentQuiz.questions.find(q=> (q.id == id));
@@ -49,5 +67,6 @@ export class DataService {
       q.id = uuid();
       this.currentQuiz.questions.push(q);
       console.log(q);
+      this.saveQuiz();
    }
   }
