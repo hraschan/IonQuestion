@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>QuestionList</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button text="Back" icon=""></ion-back-button>
+      <ion-back-button text="Back" icon="" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Alle Fragen</ion-title>
+    <ion-buttons slot="end">
+      <ion-button icon-only (click)="showDetails('0')">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        Testlable
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
