@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Question, Quiz } from './Inferfaces';
+import {v4 as uuid} from "uuid";
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,8 @@ export class DataService {
 
    }
    public getQuestion(id: string):Question{
-    this.currentQuiz.questions.find((q: Question) => {return(q.id == id)});
-    return;
+    return this.currentQuiz.questions.find(q=> (q.id == id));
+    
    }
    public getNewQuestion():Question{
     let question = {
@@ -42,6 +43,7 @@ export class DataService {
    }
 
    public addQuestion(q: Question) {
-
+      q.id = uuid();
+      this.currentQuiz.questions.push(q);
    }
   }
