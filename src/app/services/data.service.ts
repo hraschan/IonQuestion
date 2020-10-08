@@ -24,4 +24,24 @@ export class DataService {
    public deleteQuestion(q: Question) {
 
    }
-}
+   public getQuestion(id: string):Question{
+    this.currentQuiz.questions.find((q: Question) => {return(q.id == id)});
+    return;
+   }
+   public getNewQuestion():Question{
+    let question = {
+      id: "",
+      title: "",
+      a1: "",
+      a2: "",
+      a3: "",
+      a4: "",
+      correct: 0
+    }
+      return question;
+   }
+
+   public addQuestion(q: Question) {
+
+   }
+  }
