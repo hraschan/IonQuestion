@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-question-list',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionListPage implements OnInit {
 
-  constructor() { }
+  public questions;
+  constructor(private data:DataService) { 
+    this.questions = data.currentQuiz.questions;
+    
+  }
 
   ngOnInit() {
   }
 
+  showDetails(id: string) {
+
+  }
 }

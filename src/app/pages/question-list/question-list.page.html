@@ -14,9 +14,9 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
+    <ion-item *ngFor="let q of questions">
       <ion-label>
-        Testlable
+        {{q.title}}
       </ion-label>
     </ion-item>
   </ion-list>
