@@ -23,7 +23,10 @@ export class DataService {
    }
 
    public deleteQuestion(q: Question) {
-
+    let index = this.currentQuiz.questions.indexOf(q)
+    if(index>-1){
+      this.currentQuiz.questions.splice(index, 1);
+    }
    }
    public getQuestion(id: string):Question{
     return this.currentQuiz.questions.find(q=> (q.id == id));
@@ -31,7 +34,7 @@ export class DataService {
    }
    public getNewQuestion():Question{
     let question = {
-      id: "",
+      id: "0",
       title: "",
       a1: "",
       a2: "",
@@ -45,5 +48,6 @@ export class DataService {
    public addQuestion(q: Question) {
       q.id = uuid();
       this.currentQuiz.questions.push(q);
+      console.log(q);
    }
   }
